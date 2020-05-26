@@ -1,0 +1,118 @@
+rule Mammals:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_Mammals.res"
+	shell:	"GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 2 -o 3 -o 4 -o 5 -o 6 -o 7 -o 8 -o 9 -o 10 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _Mammals -v 10"
+
+rule Therians:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_Therians.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 2 -o 3 -o 4 -o 5 -o 6 -o 7 -o 8 -o 9 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _Therians -v 10")
+
+rule Eutherians:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_Eutherians.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 3 -o 4 -o 5 -o 6 -o 7 -o 8 -o 9 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _Eutherians -v 10")
+
+rule Platypus:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_Platypus.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 10 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _Platypus -v 10")
+
+rule Opossum:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_Opossum.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 2 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _Opossum -v 10")
+
+rule Mouse:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_Mouse.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 3 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _Mouse -v 10")
+
+rule Primates:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_Primates.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 4 -o 5 -o 6 -o 7 -o 8 -o 9 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _Primates -v 10")
+
+rule GreatApes:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_GreatApes.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 5 -o 6 -o 7 -o 8 -o 9 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _GreatApes -v 10")
+
+rule AfricanApes:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_AfricanApes.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 5 -o 6 -o 7 -o 8 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _AfricanApes -v 10")
+
+rule HumanChimpBonobo:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_HumanChimpBonobo.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 6 -o 7 -o 8 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _HumanChimpBonobo -v 10")
+
+rule Orangutan:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_Orangutan.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 9 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _Orangutan -v 10")
+
+rule Gorilla:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_Gorilla.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 5 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _Gorilla -v 10")
+
+rule Bonobo:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_Bonobo.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 6 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _Bonobo -v 10")
+
+rule Chimp:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_Chimp.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 7 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _Chimp -v 10")
+
+rule ChimpBonobo:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_ChimpBonobo.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 6 -o 7 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _ChimpBonobo -v 10")
+
+rule Human:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/BSThetaTestLRTs_Human.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -O -n $GENES -o 8 -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _Human -v 10")
+
+rule difference:
+	input: 	dat="data/eve/{var}/{method}/{tis}/{tis}.dat",
+		nkw="data/eve/{var}/{method}/{tis}/{tis}.nwk",
+		nindiv="data/eve/{var}/{method}/{tis}/{tis}.nindiv"
+	output:	"results/{var}/{method}/{tis}/sharedBetaMLs_NoLineage.res"
+	run:	shell("GENES=$(cat data/eve/{wildcards.var}/{wildcards.method}/{wildcards.tis}/{wildcards.tis}.in | tr -d '\n'); EVEmodel -S -n $GENES -t {input[1]} -i {input[2]} -d {input[0]} -p {wildcards.var}/{wildcards.method}/{wildcards.tis}/ -f _NoLineage -v 10")

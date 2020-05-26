@@ -1,0 +1,14 @@
+kind	type
+TMM	count
+DESeq	count
+LOESS	count
+RPKM	lib-norm
+RPKM_tmm	lib-norm
+RPKM_deseq	lib-norm
+RPKM_tmm_lib	lib-norm
+RPKM_deseq_lib	lib-norm
+RPKM_loess	lib-norm
+TPM	TPM-between
+TPM_tmm	TPM-between
+TPM_deseq	TPM-between
+TPM_loess	TPM-between

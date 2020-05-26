@@ -1,0 +1,17 @@
+sample	unit_1	unit_2	length	type	spec	group
+hsa_br_M_1	SRR306840_1	SRR306840_2	100	pe	Human	hsa_br
+hsa_br_M_2	SRR306841		75	se	Human	hsa_br
+hsa_br_M_3	SRR306839		75	se	Human	hsa_br
+hsa_br_M_4	SRR306842_1	SRR306842_2	100	pe	Human	hsa_br
+hsa_cb_F_1	SRR306844		75	se	Human	hsa_cb
+hsa_cb_M_1_1	SRR306845		75	se	Human	hsa_cb
+hsa_cb_M_1_2	SRR306846		75	se	Human	hsa_cb
+hsa_ht_M_1_1	SRR306848		75	se	Human	hsa_ht
+hsa_ht_M_1_2	SRR306849		75	se	Human	hsa_ht
+hsa_ht_M_2	SRR306850		75	se	Human	hsa_ht
+hsa_kd_M_1	SRR306852		75	se	Human	hsa_kd
+hsa_kd_M_2	SRR306853		75	se	Human	hsa_kd
+hsa_lv_M_1_1	SRR306854		75	se	Human	hsa_lv
+hsa_lv_M_1_2	SRR306855		75	se	Human	hsa_lv
+hsa_lv_M_2	SRR306856		75	se	Human	hsa_lv
+hsa_ts_M_2	SRR306858		75	se	Human	hsa_ts

@@ -1,0 +1,63 @@
+import numpy as np
+import pandas as pd
+from snakemake.utils import validate, min_version
+##### set minimum snakemake version #####
+min_version("5.1.2")
+
+##### load config and sample sheets #####
+
+configfile: "config.yaml"
+#validate(config, schema="schemas/config.schema.yaml")
+
+samples = pd.read_csv(config["samples"], sep='\t').set_index("sample", drop=False)
+
+methods = pd.read_csv(config["methods"], sep='\t').set_index("kind", drop=False)
+methods_all = pd.read_csv(config["methods_all"], sep='\t').set_index("kind", drop=False)
+methods_type = pd.read_csv(config["methods_type"], sep='\t').set_index("type", drop=False)
+
+tissues = pd.read_csv(config["tissues"], sep='\t').set_index("tissues", drop=False)
+
+species = pd.read_csv(config["specs"], dtype=str, sep='\t').set_index(["spec", "conf"], drop=False)
+species.index = species.index.set_levels([i.astype(str) for i in species.index.levels])  # enforce str in index
+
+include:"rules/plots.rules"
+include:"rules/all.rules"
+
+rule pipeline:
+	input:	"all.txt"
+	shell:	"rm {input}; rm *.pdf"
+		
+rule all:
+	input:	expand("data/plots/all/{tis.tissues}_nf.png", tis=tissues.itertuples()),
+		expand("data/plots/all/{tis.tissues}_libSizes_{method.type}.png", tis=tissues.itertuples(), method=methods_type.itertuples()),
+		expand("data/plots/all/{tis.tissues}_CoV_{method.type}.png", tis=tissues.itertuples(), method=methods_type.itertuples()),
+		expand("data/plots/all/CoV_sum_{method.type}.png", method=methods_type.itertuples()),
+		expand("data/plots/all/{tis.tissues}_RLE_{method.type}.png", tis=tissues.itertuples(), method=methods_type.itertuples()),
+		expand("data/plots/all/{tis.tissues}_nj_{method.kind}.png", tis=tissues.itertuples(), method=methods_all.itertuples()),
+		expand("data/plots/all/{tis.tissues}_pca_{method.type}.png", tis=tissues.itertuples(), method=methods_type.itertuples()),
+		expand("data/plots/all/{tis.tissues}_{method.kind}_ks.png", tis=tissues.itertuples(), method=methods.itertuples()),
+		expand("data/plots/all/{tis.tissues}_{method.kind}_ks_1D.png", tis=tissues.itertuples(), method=methods.itertuples()),
+		expand("data/plots/all/{tis.tissues}_{method.kind}_pearson.png", tis=tissues.itertuples(), method=methods.itertuples()),
+		expand("data/plots/all/{tis.tissues}_{method.kind}_pearson_1D.png", tis=tissues.itertuples(), method=methods.itertuples()),
+		expand("data/plots/all/{tis.tissues}_{method.kind}_spearman_1D.png", tis=tissues.itertuples(), method=methods.itertuples()),
+		expand("data/plots/all/Pca_{method.type}.png", method=methods_type.itertuples()),
+		expand("data/plots/all/Density_{method.type}.png", method=methods_type.itertuples()),
+		expand("data/plots/all/Nj_boxplot_{method.kind}.png", method=methods_all.itertuples()),
+		"data/plots/all/Distance.png",
+		expand("data/plots/all/Nj_{method.kind}.png", method=methods_all.itertuples())
+	output:	"all.txt"
+	shell:	"touch {output}"
+		
+rule filter:
+	input: 	expand("data/counts/raw/{spec.spec}.RData", spec=species.itertuples())
+	output:	expand("data/counts/raw_filtered/{spec.spec}.RData", spec=species.itertuples())
+	conda: "rules/envs/r_env.yml"
+	script: "scripts/Filter.R"
+	
+rule con_ortho:
+	input: 
+		reads=expand("data/counts/raw_filtered/{spec.spec}.RData", spec=species.itertuples()),
+		orthos="confs/orthos.csv"
+	output: "data/counts/all/all.RData"
+	conda: "rules/envs/r_env.yml"
+	script: "scripts/Connect_Orthos.R"

@@ -1,0 +1,10 @@
+sample	unit_1	unit_2	length	type	spec	group
+ppy_br_F_1	SRR306791		75	se	Orangutan	ppy_br
+ppy_br_M_1	SRR306792_1	SRR306792_2	100	pe	Orangutan	ppy_br
+ppy_cb_F_1	SRR306793		75	se	Orangutan	ppy_cb
+ppy_ht_F_1	SRR306794		75	se	Orangutan	ppy_ht
+ppy_ht_M_1	SRR306795		75	se	Orangutan	ppy_ht
+ppy_kd_F_1	SRR306796		75	se	Orangutan	ppy_kd
+ppy_kd_M_1	SRR306797		75	se	Orangutan	ppy_kd
+ppy_lv_F_1	SRR306798		75	se	Orangutan	ppy_lv
+ppy_lv_M_1	SRR306799		75	se	Orangutan	ppy_lv

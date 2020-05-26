@@ -1,0 +1,20 @@
+# path or URL to sample sheet (TSV format, columns: sample, condition, ...)
+samples: confs/samples.tsv
+# path or URL to sequencing unit sheet (TSV format, columns: sample, unit, fq1, fq2)
+# Units are technical replicates (e.g. lanes, or resequencing of the same biological
+# sample).
+methods: confs/methods.tsv
+methods_all: confs/methods_all.tsv
+methods_type: confs/methods_type.tsv
+specs: confs/species.tsv
+tissues: confs/tissues.tsv
+units_Bonobo: confs/units_Bonobo.tsv
+units_Chicken: confs/units_Chicken.tsv
+units_Chimp: confs/units_Chimp.tsv
+units_Gorilla: confs/units_Gorilla.tsv
+units_Human: confs/units_Human.tsv
+units_Macaque: confs/units_Macaque.tsv
+units_Mouse: confs/units_Mouse.tsv
+units_Opossum: confs/units_Opossum.tsv
+units_Orangutan: confs/units_Orangutan.tsv
+units_Platypus: confs/units_Platypus.tsv

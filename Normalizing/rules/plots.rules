@@ -1,0 +1,10 @@
+rule plot_norm_factors:
+	input:  all_deseq=expand("data/counts/DESeq/all_sf.RData", tis=tissues.itertuples()), 
+		all_tmm=expand("data/counts/TMM/all_sf.RData", tis=tissues.itertuples()),
+		all_rpkm_tmm=expand("data/counts/RPKM_tmm/all_sf.RData", tis=tissues.itertuples()),
+		all_rpkm_deseq=expand("data/counts/RPKM_deseq/all_sf.RData", tis=tissues.itertuples()),
+		all_tpm_tmm=expand("data/counts/TPM_tmm/all_sf.RData", tis=tissues.itertuples()),
+		all_tpm_deseq=expand("data/counts/TPM_deseq/all_sf.RData", tis=tissues.itertuples())
+	output: all =	expand("data/plots/all/{tis.tissues}_nf.png", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Plot_norm_factors.R"

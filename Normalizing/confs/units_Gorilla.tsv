@@ -1,0 +1,12 @@
+sample	unit_1	unit_2	length	type	spec	group
+ggo_br_F_1	SRR306800		75	se	Gorilla	ggo_br
+ggo_br_M_1	SRR306801_1	SRR306801_2	100	pe	Gorilla	ggo_br
+ggo_cb_F_1	SRR306802		75	se	Gorilla	ggo_cb
+ggo_cb_M_1	SRR306803		75	se	Gorilla	ggo_cb
+ggo_ht_F_1	SRR306804		75	se	Gorilla	ggo_ht
+ggo_ht_M_1	SRR306805		75	se	Gorilla	ggo_ht
+ggo_kd_F_1	SRR306806		75	se	Gorilla	ggo_kd
+ggo_kd_M_1	SRR306807		75	se	Gorilla	ggo_kd
+ggo_lv_F_1	SRR306808		75	se	Gorilla	ggo_lv
+ggo_lv_M_1	SRR306809		75	se	Gorilla	ggo_lv
+ggo_ts_M_1	SRR306810		75	se	Gorilla	ggo_ts

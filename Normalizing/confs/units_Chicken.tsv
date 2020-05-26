@@ -1,0 +1,15 @@
+sample	unit_1	unit_2	length	type	spec	group
+gga_br_F_1	SRR306710		75	se	Chicken	gga_br
+gga_br_M_1	SRR306711		75	se	Chicken	gga_br
+gga_cb_F_1	SRR306712		75	se	Chicken	gga_cb
+gga_cb_M_1	SRR306713		75	se	Chicken	gga_cb
+gga_ht_F_1	SRR306714		75	se	Chicken	gga_ht
+gga_ht_M_1	SRR306715		75	se	Chicken	gga_ht
+gga_kd_F_1	SRR306716		75	se	Chicken	gga_kd
+gga_kd_M_1	SRR306717		75	se	Chicken	gga_kd
+gga_lv_F_1	SRR306718		75	se	Chicken	gga_lv
+gga_lv_M_1_1	SRR306719		75	se	Chicken	gga_lv
+gga_lv_M_1_2	SRR306720		75	se	Chicken	gga_lv
+gga_ts_M_1_1	SRR306721		75	se	Chicken	gga_ts
+gga_ts_M_1_2	SRR306722		75	se	Chicken	gga_ts
+gga_ts_M_2	SRR306723		75	se	Chicken	gga_ts

@@ -1,0 +1,383 @@
+# Calculation
+
+rule rpkm_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/RPKM/all.RData"
+	conda: "envs/r_env.yml"
+	script: "../scripts/RPKM_single.R"
+
+rule rpkm_tmm_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/RPKM_tmm/all.RData",
+		"data/counts/RPKM_tmm/all_sf.RData"
+	conda: "envs/r_env.yml"
+	script: "../scripts/RPKM_tmm.R"
+
+rule rpkm_deseq_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/RPKM_deseq/all.RData",
+		"data/counts/RPKM_deseq/all_sf.RData"
+	conda: "envs/r_env.yml"
+	script: "../scripts/RPKM_deseq.R"
+
+rule rpkm_tmm_lib_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/RPKM_tmm_lib/all.RData",
+	conda: "envs/r_env.yml"
+	script: "../scripts/RPKM_tmm_lib.R"
+
+rule rpkm_deseq_lib_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/RPKM_deseq_lib/all.RData",
+	conda: "envs/r_env.yml"
+	script: "../scripts/RPKM_deseq_lib.R"
+
+rule rpkm_loess_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/RPKM_loess/all.RData",
+	conda: "envs/r_env.yml"
+	script: "../scripts/RPKM_loess.R"
+
+rule tpm_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/TPM/all.RData",
+	conda: "envs/r_env.yml"
+	script: "../scripts/TPM_single.R"
+
+rule tpm_loess_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/TPM_loess/all.RData",
+	conda: "envs/r_env.yml"
+	script: "../scripts/TPM_loess.R"
+
+rule tpm_wm_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/TPM_muwa/all.RData",
+	conda: "envs/r_env.yml"
+	script: "../scripts/TPM_orthos.R"
+
+rule tpm_tmm_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/TPM_tmm/all.RData",
+		"data/counts/TPM_tmm/all_sf.RData",
+	conda: "envs/r_env.yml"
+	script: "../scripts/TPM_tmm.R"
+
+rule tpm_deseq_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/TPM_deseq/all.RData",
+		"data/counts/TPM_deseq/all_sf.RData",
+	conda: "envs/r_env.yml"
+	script: "../scripts/TPM_deseq.R"
+
+rule loess_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/LOESS/all.RData",
+	conda: "envs/r_env.yml"
+	script: "../scripts/Loess.R"
+
+rule deseq_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/DESeq/all.RData",
+		"data/counts/DESeq/all_sf.RData"
+	conda: "envs/r_env.yml"
+	script: "../scripts/DESeq_single.R"
+
+rule tmm_all:
+	input: "data/counts/all/all.RData"
+	output: "data/counts/TMM/all.RData",
+		"data/counts/TMM/all_sf.RData"
+	conda: "envs/r_env.yml"
+	script: "../scripts/TMM_single.R"
+
+#
+# Splitting
+#
+
+rule split_all:
+	input: "data/counts/all/all.RData"
+	params: mode="all"
+	output: expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_rpkm_all:
+	input: "data/counts/RPKM/all.RData"
+	params: mode="all"
+	output: expand("data/counts/RPKM/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_rpkm_tmm_all:
+	input: "data/counts/RPKM_tmm/all.RData"
+	params: mode="all"
+	output: expand("data/counts/RPKM_tmm/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_rpkm_deseq_all:
+	input: "data/counts/RPKM_deseq/all.RData"
+	params: mode="all"
+	output: expand("data/counts/RPKM_deseq/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_rpkm_tmm_lib_all:
+	input: "data/counts/RPKM_tmm_lib/all.RData"
+	params: mode="all"
+	output: expand("data/counts/RPKM_tmm_lib/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_rpkm_deseq_lib_all:
+	input: "data/counts/RPKM_deseq_lib/all.RData"
+	params: mode="all"
+	output: expand("data/counts/RPKM_deseq_lib/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_rpkm_loess_all:
+	input: "data/counts/RPKM_loess/all.RData"
+	params: mode="all"
+	output: expand("data/counts/RPKM_loess/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_tpm_all:
+	input: "data/counts/TPM/all.RData"
+	params: mode="all"
+	output: expand("data/counts/TPM/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_tpm_loess_all:
+	input: "data/counts/TPM_loess/all.RData"
+	params: mode="all"
+	output: expand("data/counts/TPM_loess/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_tpm_wm_all:
+	input: "data/counts/TPM_muwa/all.RData"
+	params: mode="all"
+	output: expand("data/counts/TPM_muwa/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_tpm_tmm_all:
+	input: "data/counts/TPM_tmm/all.RData"
+	params: mode="all"
+	output: expand("data/counts/TPM_tmm/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_tpm_deseq_all:
+	input: "data/counts/TPM_deseq/all.RData"
+	params: mode="all"
+	output: expand("data/counts/TPM_deseq/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_loess_all:
+	input: "data/counts/LOESS/all.RData"
+	params: mode="all"
+	output: expand("data/counts/LOESS/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_deseq_all:
+	input: "data/counts/DESeq/all.RData"
+	params: mode="all"
+	output: expand("data/counts/DESeq/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+rule split_tmm_all:
+	input: "data/counts/TMM/all.RData"
+	params: mode="all"
+	output: expand("data/counts/TMM/{tis.tissues}_all.RData", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Split_Tissues.R"
+
+#
+# Plotting
+#
+
+rule plot_lib_size_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples()),
+	params: mode="tissues"
+	output:	expand("data/plots/all/{tis.tissues}_libSizes_{method.type}.png", tis=tissues.itertuples(), method=methods_type.itertuples())
+	conda: "envs/r_env.yml"
+	script:	"../scripts/Plot_Lib_sizes.R"
+
+rule plot_rle_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples()),
+		cov="data/counts/all/Mean_Cov.RData"
+	params: mode="tissues"
+	output:	expand("data/plots/all/{tis.tissues}_RLE_{method.type}.png", tis=tissues.itertuples(), method=methods_type.itertuples())
+	conda: "envs/r_env.yml"
+	script:	"../scripts/Plot_RLE.R"
+
+rule plot_cov_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples()),
+	params: mode="tissues"
+	output:	expand("data/plots/all/{tis.tissues}_CoV_{method.type}.png", tis=tissues.itertuples(), method=methods_type.itertuples())
+	conda: "envs/r_env.yml"
+	script:	"../scripts/Plot_CoV.R"
+
+rule plot_cov_sum_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples()),
+	params: mode="tissues"
+	output:	expand("data/plots/all/CoV_sum_{method.type}.png", method=methods_type.itertuples()),
+		"data/counts/all/Mean_Cov.RData"
+	conda: "envs/r_env.yml"
+	script:	"../scripts/Plot_CoV_all.R"
+
+rule plot_qq_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples()),
+	params: mode="tissues"
+	output:	expand("data/plots/all/{tis.tissues}_{method.kind}_qq.png", tis=tissues.itertuples(), method=methods.itertuples())
+	conda: "envs/r_env.yml"
+	script:	"../scripts/Plot_QQ_all.R"
+
+rule plot_ks_heat:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples()),
+	params: mode="all"
+	output:	expand("data/plots/all/{tis.tissues}_{method.kind}_ks.png", tis=tissues.itertuples(), method=methods.itertuples())
+	conda: "envs/r_env.yml"
+	script:	"../scripts/Plot_KS_Heat.R"
+
+rule plot_ks_heat_1D:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples()),
+	params: mode="all"
+	output:	expand("data/plots/all/{tis.tissues}_{method.kind}_ks_1D.png", tis=tissues.itertuples(), method=methods.itertuples())
+	conda: "envs/r_env.yml"
+	script:	"../scripts/Plot_KS_Heat_1D.R"
+
+rule plot_pearson_heat:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples()),
+	params: mode="all"
+	output:	expand("data/plots/all/{tis.tissues}_{method.kind}_pearson.png", tis=tissues.itertuples(), method=methods.itertuples())
+	conda: "envs/r_env.yml"
+	script:	"../scripts/Plot_Pearson_Heat.R"
+
+rule plot_pearson_1D:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples()),
+	params: mode="all"
+	output:	expand("data/plots/all/{tis.tissues}_{method.kind}_{{cor}}_1D.png", tis=tissues.itertuples(), method=methods.itertuples())
+	conda: "envs/r_env.yml"
+	script:	"../scripts/Plot_Pearson_1D.R"
+
+rule cluster_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples()),
+	params: mode="tissues",
+		dis="eukl",
+		cluster="hclust",
+		plot="dendo"
+	output:	data=expand("data/counts/all/{tis.tissues}_cluster_eukl.RData", tis=tissues.itertuples()),
+		plots=expand("data/plots/all/{tis.tissues}_cluster_{method.kind}.png", tis=tissues.itertuples(), method=methods_all.itertuples()),
+		text=expand("data/plots/all/{tis.tissues}_nj.txt", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/NJ.R"
+	#script: "../scripts/Cluster.R"
+
+rule cluster_spear_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples()),
+	params: mode="tissues",
+		dis="spearman",
+		cluster="hclust",
+		plot="dendo"
+	output:	data=expand("data/counts/all/{tis.tissues}_cluster_spearman.RData", tis=tissues.itertuples()),	
+		plots=expand("data/plots/all/{tis.tissues}_cluster_spear_{method.kind}.png", tis=tissues.itertuples(), method=methods_all.itertuples()),
+		text=expand("data/plots/all/{tis.tissues}_nj.txt", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	#script: "../scripts/Cluster.R"
+	script: "../scripts/NJ.R"
+
+rule nj_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples())
+	params: mode="tissues",
+		dis="spearman",
+		cluster="nj",
+		plot="tree"
+	output:	data=expand("data/counts/all/{tis.tissues}_trees.RData", tis=tissues.itertuples()),
+		plots=expand("data/plots/all/{tis.tissues}_nj_{method.kind}.png", tis=tissues.itertuples(), method=methods_all.itertuples()),
+		text=expand("data/plots/all/{tis.tissues}_nj.txt", tis=tissues.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/NJ.R"
+
+rule nj_all_boxplots:
+	input:	expand("data/counts/all/{tis.tissues}_trees.RData", tis=tissues.itertuples())
+	params: mode="tissues"
+	output:	expand("data/plots/all/Nj_boxplot_{method.kind}.png", method=methods_all.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/NJ_Boxplots.R"
+
+rule nj_all_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples())
+	output:	expand("data/plots/all/Nj_{method.kind}.png", method=methods_all.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/NJ_all.R"
+
+rule divergence_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples())
+	output:	expand("data/plots/all/Div_{method.kind}.png", method=methods_all.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Divergence.R"
+
+rule divergence_all_2:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples())
+	output:	expand("data/plots/all/Div_2_{method.kind}.png", method=methods_all.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Divergence_2.R"
+
+rule distance_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples())
+	params: mode="tissues",
+		dis="spearman"
+	output:	"data/plots/all/Distance.png",
+		"data/plots/all/Distance_Scaled.png"
+	conda: "envs/r_env.yml"
+	script: "../scripts/Distance.R"
+
+rule PCA_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples())
+	params: mode="tissues"
+	output:	expand("data/plots/all/{tis.tissues}_pca_{method.type}.png", tis=tissues.itertuples(), method=methods_type.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/PCA.R"
+
+rule PCA_all_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples())
+	params: mode="tissues"
+	output:	expand("data/plots/all/Pca_{method.type}.png", method=methods_type.itertuples()),
+		"data/plots/all/Pca_inter.png",
+		"data/plots/all/Pca_intra.png"
+	conda: "envs/r_env.yml"
+	script: "../scripts/PCA_all.R"
+
+rule den_all_all:
+	input:	raw=expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		normed=expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples())
+	params: mode="tissues"
+	output:	expand("data/plots/all/Density_{method.type}.png", method=methods_type.itertuples())
+	conda: "envs/r_env.yml"
+	script: "../scripts/Density.R"

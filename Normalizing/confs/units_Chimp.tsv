@@ -1,0 +1,16 @@
+sample	unit_1	unit_2	length	type	spec	group
+ptr_br_F_1	SRR306811		75	se	Chimp	ptr_br
+ptr_br_M_1	SRR306812_1	SRR306812_2	100	pe	Chimp	ptr_br
+ptr_br_M_2	SRR306813_1	SRR306813_2	100	pe	Chimp	ptr_br
+ptr_br_M_3	SRR306814_1	SRR306814_2	100	pe	Chimp	ptr_br
+ptr_br_M_4	SRR306815_1	SRR306815_2	100	pe	Chimp	ptr_br
+ptr_br_M_5	SRR306816_1	SRR306816_2	100	pe	Chimp	ptr_br
+ptr_cb_F_1	SRR306817		75	se	Chimp	ptr_cb
+ptr_cb_M_1	SRR306818		75	se	Chimp	ptr_cb
+ptr_ht_F_1	SRR306819		75	se	Chimp	ptr_ht
+ptr_ht_M_1	SRR306820		75	se	Chimp	ptr_ht
+ptr_kd_F_1	SRR306821		75	se	Chimp	ptr_kd
+ptr_kd_M_1	SRR306822		75	se	Chimp	ptr_kd
+ptr_lv_F_1	SRR306823		75	se	Chimp	ptr_lv
+ptr_lv_M_1	SRR306824		75	se	Chimp	ptr_lv
+ptr_ts_M_1	SRR306825		75	se	Chimp	ptr_ts

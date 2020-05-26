@@ -1,0 +1,47 @@
+import numpy as np
+import pandas as pd
+from snakemake.utils import validate, min_version
+##### set minimum snakemake version #####
+min_version("5.1.2")
+
+##### load config and sample sheets #####
+
+configfile: "config.yaml"
+#validate(config, schema="schemas/config.schema.yaml")
+
+samples = pd.read_csv(config["samples"], sep='\t').set_index("sample", drop=False)
+
+methods = pd.read_csv(config["methods"], sep='\t').set_index("kind", drop=False)
+methods_all = pd.read_csv(config["methods_all"], sep='\t').set_index("kind", drop=False)
+methods_type = pd.read_csv(config["methods_type"], sep='\t').set_index("type", drop=False)
+
+tissues = pd.read_csv(config["tissues"], sep='\t').set_index("tissues", drop=False)
+
+species = pd.read_csv(config["specs"], dtype=str, sep='\t').set_index(["spec", "conf"], drop=False)
+species.index = species.index.set_levels([i.astype(str) for i in species.index.levels])  # enforce str in index
+
+eve_tests = pd.read_csv(config["eve"], sep='\t').set_index("test", drop=False)
+
+include: "rules/eve.rules"
+
+rule all:
+	input:  expand("results/all/Average_{tis.tissues}{test.test}.png", tis=tissues.itertuples(), test=eve_tests.itertuples()),
+		expand("results/all/{method.kind}/{tis.tissues}/sharedBetaMLs_NoLineage.res", tis=tissues.itertuples(), method=methods_all.itertuples(), test=eve_tests.itertuples())
+		
+rule average:
+	input: 	expand("results/all/{method.kind}/{{tis}}/BSThetaTestLRTs_{{test}}.res", method=methods_all.itertuples())
+	output: 	"results/all/Average_{tis}_{test}.png",
+			"results/all/Average_rel_{tis}_{test}.png"
+	conda:	"rules/R.3.6.1.yml"
+	script: "scripts/Shifted.R"
+
+rule import_tis:
+	input:  all_raw=	expand("data/counts/all/{tis.tissues}.RData", tis=tissues.itertuples()),
+		all=		expand("data/counts/{method.kind}/{tis.tissues}_all.RData", tis=tissues.itertuples(), method=methods.itertuples())
+	output: all_RData=expand("data/eve/all/{method.kind}/{tis.tissues}/{tis.tissues}.RData", tis=tissues.itertuples(), method=methods_all.itertuples()),
+		all_dat=expand("data/eve/all/{method.kind}/{tis.tissues}/{tis.tissues}.dat", tis=tissues.itertuples(), method=methods_all.itertuples()),
+		all_in=expand("data/eve/all/{method.kind}/{tis.tissues}/{tis.tissues}.in", tis=tissues.itertuples(), method=methods_all.itertuples()),
+		all_nindiv=expand("data/eve/all/{method.kind}/{tis.tissues}/{tis.tissues}.nindiv", tis=tissues.itertuples(), method=methods_all.itertuples()),
+		all_nwk=expand("data/eve/all/{method.kind}/{tis.tissues}/{tis.tissues}.nwk", tis=tissues.itertuples(), method=methods_all.itertuples())
+	conda:	"rules/R.3.6.1.yml"
+	script: "scripts/import_tis.R"

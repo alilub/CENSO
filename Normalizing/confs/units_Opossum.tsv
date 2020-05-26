@@ -1,0 +1,15 @@
+sample	unit_1	unit_2	length	type	spec	group
+mdo_br_F_1_1	SRR306742		75	se	Opossum	mdo_br
+mdo_br_F_1_2	SRR306743		75	se	Opossum	mdo_br
+mdo_br_M_1	SRR306744		75	se	Opossum	mdo_br
+mdo_cb_F_1	SRR306745		75	se	Opossum	mdo_cb
+mdo_cb_M_1	SRR306746		75	se	Opossum	mdo_cb
+mdo_ht_F_1_1	SRR306747		75	se	Opossum	mdo_ht
+mdo_ht_F_1_2	SRR306748		75	se	Opossum	mdo_ht
+mdo_ht_M_1_1	SRR306749		75	se	Opossum	mdo_ht
+mdo_ht_M_1_2	SRR306750		75	se	Opossum	mdo_ht
+mdo_kd_F_1	SRR306751		75	se	Opossum	mdo_kd
+mdo_lv_F_1	SRR306753		75	se	Opossum	mdo_lv
+mdo_lv_M_1	SRR306754		75	se	Opossum	mdo_lv
+mdo_ts_M_1	SRR306755		75	se	Opossum	mdo_ts
+mdo_ts_M_2	SRR306756		75	se	Opossum	mdo_ts

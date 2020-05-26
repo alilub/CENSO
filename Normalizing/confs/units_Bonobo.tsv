@@ -1,0 +1,13 @@
+sample	unit_1	unit_2	length	type	spec	group
+ppa_br_F_1	SRR306826_1	SRR306826_2	100	pe	Bonobo	ppa_br
+ppa_br_M_1	SRR306828		75	se	Bonobo	ppa_br
+ppa_br_F_2	SRR306827		75	se	Bonobo	ppa_br
+ppa_cb_F_1	SRR306829		75	se	Bonobo	ppa_cb
+ppa_cb_M_1	SRR306830		75	se	Bonobo	ppa_cb
+ppa_lv_F_1	SRR306835		75	se	Bonobo	ppa_lv
+ppa_lv_M_1	SRR306836		75	se	Bonobo	ppa_lv
+ppa_ht_F_1	SRR306831		75	se	Bonobo	ppa_ht
+ppa_ht_M_1	SRR306832		75	se	Bonobo	ppa_ht
+ppa_kd_F_1	SRR306833		75	se	Bonobo	ppa_kd
+ppa_kd_M_1	SRR306834		75	se	Bonobo	ppa_kd
+ppa_ts_M_1	SRR306837		75	se	Bonobo	ppa_ts

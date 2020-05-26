@@ -1,0 +1,15 @@
+sample	unit_1	unit_2	length	type	spec	group
+mml_br_F_1	SRR306777		75	se	Macaque	mml_br
+mml_br_M_1	SRR306778		75	se	Macaque	mml_br
+mml_br_M_2	SRR306779_1	SRR306779_2	100	pe	Macaque	mml_br
+mml_cb_F_1	SRR306780		75	se	Macaque	mml_cb
+mml_cb_M_1	SRR306781		75	se	Macaque	mml_cb
+mml_ht_F_1	SRR306782		75	se	Macaque	mml_ht
+mml_ht_M_1	SRR306783		75	se	Macaque	mml_ht
+mml_kd_F_1	SRR306784		75	se	Macaque	mml_kd
+mml_kd_M_1	SRR306785		75	se	Macaque	mml_kd
+mml_lv_F_1	SRR306786		75	se	Macaque	mml_lv
+mml_lv_M_1_1	SRR306787		75	se	Macaque	mml_lv
+mml_lv_M_1_2	SRR306788		75	se	Macaque	mml_lv
+mml_ts_M_1	SRR306789		75	se	Macaque	mml_ts
+mml_ts_M_2	SRR306790		75	se	Macaque	mml_ts
